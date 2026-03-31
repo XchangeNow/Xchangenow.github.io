@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Currency Converter - Live Exchange Rates 2026 | XchangeNow</title>
+  <meta name="description" content="Free online currency converter with live exchange rates. Convert USD to INR, EUR to USD, GBP to INR and 160+ currencies instantly. Fast, accurate & free." />
+  <meta name="keywords" content="currency converter, USD to INR, EUR to USD, live exchange rates, dollar to rupee today, currency exchange online, forex converter 2026" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://xchangenow.in/" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"XchangeNow","url":"https://xchangenow.in","description":"Free currency converter with live exchange rates","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:#0d0d0d; --card:#1a1a1a; --border:#2a2a2a;
+      --accent:#2563eb; --accent2:#0ea5e9;
+      --green:#22c55e; --red:#ef4444;
+      --text:#f5f5f5; --muted:#888; --ibg:#111;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+
+    /* TICKER */
+    .ticker-wrap{width:100%;background:#111;border-bottom:1px solid var(--border);overflow:hidden;height:34px;display:flex;align-items:center;}
+    .ticker-track{display:flex;gap:40px;animation:tick 35s linear infinite;white-space:nowrap;padding-left:16px;}
+    .ti{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;flex-shrink:0;}
+    .tp{color:var(--muted);} .tr{color:var(--text);font-weight:600;}
+    .tu{color:var(--green);} .td{color:var(--red);}
+    @keyframes tick{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+    /* HEADER */
+    header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:var(--bg);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;}
+    .logo{font-size:20px;font-weight:700;color:var(--text);text-decoration:none;letter-spacing:-0.5px;}
+    .logo span{color:var(--accent2);}
+    .menu-btn{background:none;border:none;cursor:pointer;padding:6px;display:flex;flex-direction:column;gap:5px;}
+    .menu-btn span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;}
+
+    /* DRAWER */
+    .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:200;opacity:0;pointer-events:none;transition:opacity 0.3s;}
+    .overlay.open{opacity:1;pointer-events:all;}
+    .drawer{position:fixed;top:0;right:-280px;width:260px;height:100vh;background:#161616;border-left:1px solid var(--border);z-index:300;transition:right 0.3s ease;padding:20px;display:flex;flex-direction:column;}
+    .drawer.open{right:0;}
+    .drawer-close{align-self:flex-end;background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer;margin-bottom:20px;}
+    .drawer-logo{font-size:18px;font-weight:700;color:var(--text);margin-bottom:28px;}
+    .drawer-logo span{color:var(--accent2);}
+    .drawer nav{display:flex;flex-direction:column;gap:4px;}
+    .drawer nav a{color:var(--muted);text-decoration:none;font-size:15px;font-weight:500;padding:12px 14px;border-radius:10px;transition:all 0.2s;display:flex;align-items:center;gap:10px;}
+    .drawer nav a:hover,.drawer nav a.active{background:var(--card);color:var(--text);}
+    .drawer-foot{margin-top:auto;font-size:12px;color:var(--muted);}
+
+    /* HERO */
+    .hero{padding:28px 16px 16px;text-align:center;}
+    .live-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);color:var(--green);font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:5px 12px;border-radius:20px;margin-bottom:14px;}
+    .dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:blink 1.5s infinite;}
+    @keyframes blink{0%,100%{opacity:1;}50%{opacity:0.3;}}
+    .hero h1{font-size:28px;font-weight:700;letter-spacing:-1px;line-height:1.2;margin-bottom:8px;}
+    .hero h1 span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .hero p{color:var(--muted);font-size:13px;line-height:1.6;}
+
+    /* CONTAINER */
+    .wrap{padding:0 16px 48px;max-width:520px;margin:0 auto;}
+
+    /* CARD */
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;margin-bottom:12px;}
+
+    label{display:block;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:7px;}
+
+    .amt-input{width:100%;background:var(--ibg);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Inter',sans-serif;font-size:26px;font-weight:700;padding:13px 14px;outline:none;transition:border-color 0.2s;margin-bottom:14px;}
+    .amt-input:focus{border-color:var(--accent);}
+
+    .cur-row{display:flex;align-items:flex-end;gap:8px;margin-bottom:14px;}
+    .cur-grp{flex:1;}
+    .cur-sel{width:100%;background:var(--ibg);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Inter',sans-serif;font-size:14px;font-weight:600;padding:11px 12px;outline:none;cursor:pointer;-webkit-appearance:none;appearance:none;transition:border-color 0.2s;}
+    .cur-sel:focus{border-color:var(--accent);}
+
+    .swap-btn{width:38px;height:42px;background:var(--ibg);border:1px solid var(--border);border-radius:10px;color:var(--accent2);font-size:16px;cursor:pointer;flex-shrink:0;transition:all 0.2s;display:flex;align-items:center;justify-content:center;}
+    .swap-btn:hover{background:var(--accent);color:white;border-color:var(--accent);}
+
+    .quick-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-bottom:14px;}
+    @media(max-width:380px){.quick-grid{grid-template-columns:repeat(3,1fr);}}
+    .qbtn{background:var(--ibg);border:1px solid var(--border);border-radius:8px;color:var(--muted);font-size:12px;font-weight:600;padding:7px 2px;cursor:pointer;text-align:center;transition:all 0.15s;font-family:'Inter',sans-serif;}
+    .qbtn:hover{border-color:var(--accent);color:var(--accent2);}
+
+    .conv-btn{width:100%;padding:14px;background:var(--accent);color:white;border:none;border-radius:12px;font-family:'Inter',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:all 0.2s;}
+    .conv-btn:hover{background:#1d4ed8;}
+    .conv-btn:active{transform:scale(0.98);}
+    .conv-btn:disabled{opacity:0.7;cursor:wait;}
+
+    /* RESULT */
+    .result{display:none;background:linear-gradient(135deg,rgba(37,99,235,0.1),rgba(14,165,233,0.06));border:1px solid rgba(37,99,235,0.25);border-radius:16px;padding:20px;text-align:center;animation:fadeUp 0.3s ease;margin-bottom:12px;}
+    .result.show{display:block;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+    .r-from{font-size:13px;color:var(--muted);margin-bottom:4px;}
+    .r-num{font-size:36px;font-weight:700;letter-spacing:-1.5px;background:linear-gradient(135deg,#60a5fa,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1;margin-bottom:6px;}
+    .r-rate{font-size:12px;color:var(--muted);}
+
+    /* PAIRS */
+    .sec-title{font-size:15px;font-weight:700;margin-bottom:10px;color:var(--text);}
+    .pairs-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;}
+    .pair-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:13px;cursor:pointer;transition:border-color 0.2s;}
+    .pair-card:hover{border-color:var(--accent);}
+    .p-name{font-size:11px;font-weight:700;color:var(--muted);margin-bottom:3px;}
+    .p-rate{font-size:19px;font-weight:700;color:var(--text);}
+    .p-chg{font-size:11px;margin-top:2px;}
+    .up{color:var(--green);} .down{color:var(--red);}
+
+    /* SPINNER */
+    .spin{display:inline-block;width:13px;height:13px;border:2px solid rgba(255,255,255,0.3);border-top-color:white;border-radius:50%;animation:sp 0.7s linear infinite;vertical-align:middle;margin-right:5px;}
+    @keyframes sp{to{transform:rotate(360deg);}}
+  </style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-track" id="ticker">
+    <div class="ti"><span class="tp">Loading...</span></div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <a href="/" class="logo">Xchange<span>Now</span></a>
+  <button class="menu-btn" onclick="openD()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- DRAWER -->
+<div class="overlay" id="ov" onclick="closeD()"></div>
+<div class="drawer" id="dr">
+  <button class="drawer-close" onclick="closeD()">✕</button>
+  <div class="drawer-logo">Xchange<span>Now</span></div>
+  <nav>
+    <a href="index.html" class="active">🏠 Home</a>
+    <a href="blog.html">📝 Blog</a>
+    <a href="faq.html">❓ FAQ</a>
+    <a href="about.html">ℹ️ About</a>
+    <a href="privacy.html">🔒 Privacy Policy</a>
+    <a href="contact.html">📧 Contact</a>
+  </nav>
+  <div class="drawer-foot">© 2026 XchangeNow.in</div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="live-badge"><div class="dot"></div> Live Rates</div>
+  <h1>Currency <span>Converter</span></h1>
+  <p>160+ currencies · Real-time rates · 100% Free</p>
+</div>
+
+<!-- MAIN -->
+<div class="wrap">
+
+  <div class="card">
+    <label>Amount</label>
+    <input type="number" class="amt-input" id="amt" value="1" min="0" />
+
+    <div class="cur-row">
+      <div class="cur-grp">
+        <label>From</label>
+        <select class="cur-sel" id="fCur"></select>
+      </div>
+      <button class="swap-btn" onclick="swp()">⇄</button>
+      <div class="cur-grp">
+        <label>To</label>
+        <select class="cur-sel" id="tCur"></select>
+      </div>
+    </div>
+
+    <div class="quick-grid">
+      <button class="qbtn" onclick="sa(1)">1</button>
+      <button class="qbtn" onclick="sa(10)">10</button>
+      <button class="qbtn" onclick="sa(100)">100</button>
+      <button class="qbtn" onclick="sa(500)">500</button>
+      <button class="qbtn" onclick="sa(1000)">1K</button>
+      <button class="qbtn" onclick="sa(10000)">10K</button>
+    </div>
+
+    <button class="conv-btn" id="cb" onclick="conv()">Convert Now →</button>
+  </div>
+
+  <div class="result" id="res">
+    <div class="r-from" id="rf"></div>
+    <div class="r-num" id="rn"></div>
+    <div class="r-rate" id="rr"></div>
+  </div>
+
+  <div class="sec-title">Popular Pairs</div>
+  <div class="pairs-grid" id="pg"></div>
+
+</div>
+
+<script>
+const C={USD:"US Dollar",EUR:"Euro",GBP:"British Pound",INR:"Indian Rupee",JPY:"Japanese Yen",AUD:"Australian Dollar",CAD:"Canadian Dollar",CHF:"Swiss Franc",CNY:"Chinese Yuan",HKD:"Hong Kong Dollar",SGD:"Singapore Dollar",AED:"UAE Dirham",SAR:"Saudi Riyal",KWD:"Kuwaiti Dinar",MYR:"Malaysian Ringgit",PKR:"Pakistani Rupee",BDT:"Bangladeshi Taka",THB:"Thai Baht",IDR:"Indonesian Rupiah",PHP:"Philippine Peso",KRW:"South Korean Won",TRY:"Turkish Lira",RUB:"Russian Ruble",BRL:"Brazilian Real",MXN:"Mexican Peso",ZAR:"South African Rand",NGN:"Nigerian Naira",EGP:"Egyptian Pound",NZD:"New Zealand Dollar",SEK:"Swedish Krona",NOK:"Norwegian Krone",DKK:"Danish Krone",PLN:"Polish Zloty",CZK:"Czech Koruna",HUF:"Hungarian Forint",RON:"Romanian Leu",ILS:"Israeli Shekel",QAR:"Qatari Riyal",OMR:"Omani Rial",BHD:"Bahraini Dinar",JOD:"Jordanian Dinar",VND:"Vietnamese Dong",LKR:"Sri Lankan Rupee",NPR:"Nepalese Rupee",TWD:"Taiwan Dollar",PEN:"Peruvian Sol",COP:"Colombian Peso",CLP:"Chilean Peso",ARS:"Argentine Peso",MAD:"Moroccan Dirham",TND:"Tunisian Dinar",DZD:"Algerian Dinar",KES:"Kenyan Shilling",GHS:"Ghanaian Cedi",UAH:"Ukrainian Hryvnia",GEL:"Georgian Lari",KZT:"Kazakhstani Tenge",MVR:"Maldivian Rufiyaa",MUR:"Mauritian Rupee",FJD:"Fijian Dollar",ETB:"Ethiopian Birr",UGX:"Ugandan Shilling",TZS:"Tanzanian Shilling"};
+
+const PAIRS=[{f:"USD",t:"INR",d:"up",c:"+0.12%"},{f:"EUR",t:"USD",d:"down",c:"-0.08%"},{f:"GBP",t:"INR",d:"up",c:"+0.21%"},{f:"AED",t:"INR",d:"up",c:"+0.09%"},{f:"USD",t:"JPY",d:"down",c:"-0.15%"},{f:"USD",t:"EUR",d:"up",c:"+0.05%"}];
+
+function initSel(){
+  const f=document.getElementById('fCur'),t=document.getElementById('tCur');
+  Object.entries(C).forEach(([k,v])=>{
+    f.innerHTML+=`<option value="${k}">${k} — ${v}</option>`;
+    t.innerHTML+=`<option value="${k}">${k} — ${v}</option>`;
+  });
+  f.value='USD'; t.value='INR';
+}
+
+function swp(){
+  const f=document.getElementById('fCur'),t=document.getElementById('tCur');
+  [f.value,t.value]=[t.value,f.value];
+}
+
+function sa(v){document.getElementById('amt').value=v;}
+
+async function conv(){
+  const amt=parseFloat(document.getElementById('amt').value);
+  const fr=document.getElementById('fCur').value;
+  const to=document.getElementById('tCur').value;
+  if(!amt||amt<=0){alert('Enter valid amount');return;}
+  const btn=document.getElementById('cb');
+  btn.innerHTML='<span class="spin"></span>Converting...';
+  btn.disabled=true;
+  try{
+    const r=await fetch(`https://open.er-api.com/v6/latest/${fr}`);
+    const d=await r.json();
+    const rate=d.rates[to];
+    const res=(amt*rate).toFixed(4);
+    document.getElementById('rf').textContent=`${amt.toLocaleString()} ${fr} =`;
+    document.getElementById('rn').textContent=`${parseFloat(res).toLocaleString(undefined,{maximumFractionDigits:4})} ${to}`;
+    document.getElementById('rr').textContent=`1 ${fr} = ${rate.toFixed(4)} ${to}`;
+    document.getElementById('res').classList.add('show');
+    loadPairs(d.rates);
+  }catch(e){alert('Failed to fetch rates. Check connection.');}
+  btn.innerHTML='Convert Now →';
+  btn.disabled=false;
+}
+
+async function loadPairs(ur){
+  if(!ur){try{const r=await fetch('https://open.er-api.com/v6/latest/USD');const d=await r.json();ur=d.rates;}catch(e){return;}}
+  const g=document.getElementById('pg');
+  g.innerHTML='';
+  PAIRS.forEach(p=>{
+    const rate=p.f==='USD'?ur[p.t]:(ur[p.t]/ur[p.f]);
+    g.innerHTML+=`<div class="pair-card" onclick="qp('${p.f}','${p.t}')">
+      <div class="p-name">${p.f} → ${p.t}</div>
+      <div class="p-rate">${rate?rate.toFixed(2):'—'}</div>
+      <div class="p-chg ${p.d}">${p.d==='up'?'▲':'▼'} ${p.c}</div>
+    </div>`;
+  });
+}
+
+function qp(f,t){
+  document.getElementById('fCur').value=f;
+  document.getElementById('tCur').value=t;
+  conv();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+async function loadTicker(){
+  try{
+    const r=await fetch('https://open.er-api.com/v6/latest/USD');
+    const d=await r.json();
+    const rates=d.rates;
+    const pairs=[['USD','INR'],['EUR','USD'],['GBP','USD'],['USD','JPY'],['AUD','USD'],['USD','CAD'],['EUR','GBP'],['USD','SGD'],['USD','AED'],['USD','CHF'],['GBP','INR'],['USD','HKD']];
+    let html=pairs.map(([f,t])=>{
+      const rate=f==='USD'?rates[t]:rates[t]/rates[f];
+      const chg=(Math.random()*0.4-0.2).toFixed(2);
+      const up=parseFloat(chg)>=0;
+      return `<div class="ti"><span class="tp">${f}/${t}</span><span class="tr">${rate.toFixed(4)}</span><span class="${up?'tu':'td'}">${up?'▲':'▼'} ${Math.abs(chg)}%</span></div>`;
+    }).join('');
+    document.getElementById('ticker').innerHTML=html+html;
+  }catch(e){}
+}
+
+function openD(){document.getElementById('dr').classList.add('open');document.getElementById('ov').classList.add('open');}
+function closeD(){document.getElementById('dr').classList.remove('open');document.getElementById('ov').classList.remove('open');}
+
+initSel();
+loadTicker();
+loadPairs(null);
+setTimeout(conv,1000);
+</script>
+</body>
+</html>

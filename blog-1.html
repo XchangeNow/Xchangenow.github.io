@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Currency & Forex Blog - Articles & Guides | XchangeNow</title>
+  <meta name="description" content="Learn about currency exchange, forex rates, international money transfers, travel money tips and more on the XchangeNow blog." />
+  <meta name="keywords" content="currency exchange blog, forex guide, USD to INR today, how exchange rates work, travel money tips, international transfer guide" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://xchangenow.in/blog.html" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#0d0d0d;--card:#1a1a1a;--border:#2a2a2a;--accent:#2563eb;--accent2:#0ea5e9;--text:#f5f5f5;--muted:#888;--green:#22c55e;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+    header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:var(--bg);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;}
+    .logo{font-size:20px;font-weight:700;color:var(--text);text-decoration:none;letter-spacing:-0.5px;}
+    .logo span{color:var(--accent2);}
+    .menu-btn{background:none;border:none;cursor:pointer;padding:6px;display:flex;flex-direction:column;gap:5px;}
+    .menu-btn span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;}
+    .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:200;opacity:0;pointer-events:none;transition:opacity 0.3s;}
+    .overlay.open{opacity:1;pointer-events:all;}
+    .drawer{position:fixed;top:0;right:-280px;width:260px;height:100vh;background:#161616;border-left:1px solid var(--border);z-index:300;transition:right 0.3s ease;padding:20px;display:flex;flex-direction:column;}
+    .drawer.open{right:0;}
+    .drawer-close{align-self:flex-end;background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer;margin-bottom:20px;}
+    .drawer-logo{font-size:18px;font-weight:700;color:var(--text);margin-bottom:28px;}
+    .drawer-logo span{color:var(--accent2);}
+    .drawer nav{display:flex;flex-direction:column;gap:4px;}
+    .drawer nav a{color:var(--muted);text-decoration:none;font-size:15px;font-weight:500;padding:12px 14px;border-radius:10px;transition:all 0.2s;display:flex;align-items:center;gap:10px;}
+    .drawer nav a:hover,.drawer nav a.active{background:var(--card);color:var(--text);}
+    .drawer-foot{margin-top:auto;font-size:12px;color:var(--muted);}
+    .wrap{padding:24px 16px 48px;max-width:600px;margin:0 auto;}
+    .page-title{font-size:24px;font-weight:700;letter-spacing:-0.5px;margin-bottom:6px;}
+    .page-title span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .page-sub{color:var(--muted);font-size:14px;margin-bottom:24px;}
+    .blog-list{display:flex;flex-direction:column;gap:12px;}
+    .blog-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;text-decoration:none;display:block;transition:border-color 0.2s;}
+    .blog-card:hover{border-color:var(--accent);}
+    .b-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--accent);background:rgba(37,99,235,0.1);padding:3px 8px;border-radius:4px;margin-bottom:8px;}
+    .b-title{font-size:15px;font-weight:700;color:var(--text);line-height:1.4;margin-bottom:6px;}
+    .b-desc{font-size:13px;color:var(--muted);line-height:1.5;}
+    .b-meta{font-size:11px;color:var(--muted);margin-top:10px;padding-top:10px;border-top:1px solid var(--border);}
+    .ad-space{background:var(--card);border:1px dashed var(--border);border-radius:12px;padding:20px;text-align:center;color:var(--muted);font-size:12px;margin:20px 0;min-height:90px;display:flex;align-items:center;justify-content:center;}
+  </style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="logo">Xchange<span>Now</span></a>
+  <button class="menu-btn" onclick="openD()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+<div class="overlay" id="ov" onclick="closeD()"></div>
+<div class="drawer" id="dr">
+  <button class="drawer-close" onclick="closeD()">✕</button>
+  <div class="drawer-logo">Xchange<span>Now</span></div>
+  <nav>
+    <a href="index.html">🏠 Home</a>
+    <a href="blog.html" class="active">📝 Blog</a>
+    <a href="faq.html">❓ FAQ</a>
+    <a href="about.html">ℹ️ About</a>
+    <a href="privacy.html">🔒 Privacy Policy</a>
+    <a href="contact.html">📧 Contact</a>
+  </nav>
+  <div class="drawer-foot">© 2026 XchangeNow.in</div>
+</div>
+
+<div class="wrap">
+  <div class="page-title">Currency <span>Blog</span></div>
+  <div class="page-sub">Guides, tips & insights on forex and global currency</div>
+
+  <div class="ad-space">Advertisement</div>
+
+  <div class="blog-list" id="blogList"></div>
+
+  <div class="ad-space" style="margin-top:24px;">Advertisement</div>
+</div>
+
+<script>
+const blogs=[
+  {tag:"Guide",emoji:"💵",title:"USD to INR: Understanding Dollar to Rupee Rate in 2026",desc:"Why does 1 USD = 84+ INR? Learn the key factors that drive the dollar to rupee exchange rate — from RBI policy to trade balance and FII flows.",date:"March 2026",read:"5 min"},
+  {tag:"Forex",emoji:"🌍",title:"How Are Currency Exchange Rates Determined?",desc:"Supply and demand, central banks, inflation, interest rates — here is a simple explanation of everything that moves exchange rates daily.",date:"March 2026",read:"6 min"},
+  {tag:"Travel",emoji:"✈️",title:"Best Way to Exchange Currency Before International Travel",desc:"Airport counters, bank rates, forex cards, ATMs abroad — which method gives you the best exchange rate? We compared them all.",date:"February 2026",read:"5 min"},
+  {tag:"Economics",emoji:"📊",title:"Why Do Exchange Rates Change Every Day?",desc:"Interest rates, geopolitical events, inflation data, trade data — all of these move currency values constantly. Here is how it works.",date:"February 2026",read:"4 min"},
+  {tag:"Tips",emoji:"💳",title:"How to Send Money Internationally at Low Cost",desc:"Compare SWIFT transfers, Wise, Remitly, Google Pay and other services to find the cheapest and fastest way to transfer money abroad.",date:"January 2026",read:"6 min"},
+  {tag:"Crypto",emoji:"🪙",title:"USD to Bitcoin: How Crypto Exchange Rates Work",desc:"How is Bitcoin valued in dollars? Why is crypto so much more volatile than traditional currency pairs like USD/EUR or USD/INR?",date:"January 2026",read:"5 min"},
+  {tag:"Banking",emoji:"🏦",title:"Bank Rate vs Mid-Market Rate: What Is the Real Exchange Rate?",desc:"Banks always give you a worse rate than mid-market. Learn how to find the real exchange rate and avoid paying hidden conversion fees.",date:"December 2025",read:"4 min"},
+  {tag:"Investing",emoji:"📈",title:"Currency Risk in International Investing Explained",desc:"When you invest in foreign stocks or funds, currency movements can eat your profits. Here is how to understand and hedge currency risk.",date:"December 2025",read:"7 min"},
+  {tag:"India",emoji:"🇮🇳",title:"RBI and the Indian Rupee: How India Manages Its Exchange Rate",desc:"The Reserve Bank of India regularly intervenes in forex markets to stabilize the rupee. Here is how the RBI controls currency policy.",date:"November 2025",read:"5 min"},
+  {tag:"Guide",emoji:"🧮",title:"How to Calculate Exchange Rate Manually — Step by Step",desc:"Do not rely on a calculator every time. Learn how to quickly calculate currency conversion manually with simple math anyone can follow.",date:"November 2025",read:"3 min"},
+  {tag:"Tips",emoji:"🛡️",title:"How to Avoid Currency Exchange Scams When Travelling",desc:"Street money changers, fake rates, hidden fees — learn how to spot and avoid the most common currency exchange scams around the world.",date:"October 2025",read:"4 min"},
+  {tag:"Economics",emoji:"🌐",title:"What Happens to Exchange Rates During a Recession?",desc:"Economic downturns affect currency values in complex ways. Learn how recessions, stimulus packages and rate cuts impact forex markets.",date:"October 2025",read:"6 min"},
+];
+
+const list=document.getElementById('blogList');
+blogs.forEach((b,i)=>{
+  list.innerHTML+=`
+    <a href="#" class="blog-card">
+      <div class="b-tag">${b.tag}</div>
+      <div class="b-title">${b.emoji} ${b.title}</div>
+      <div class="b-desc">${b.desc}</div>
+      <div class="b-meta">📅 ${b.date} · ${b.read} read</div>
+    </a>`;
+  if(i===5) list.innerHTML+=`<div class="ad-space">Advertisement</div>`;
+});
+
+function openD(){document.getElementById('dr').classList.add('open');document.getElementById('ov').classList.add('open');}
+function closeD(){document.getElementById('dr').classList.remove('open');document.getElementById('ov').classList.remove('open');}
+</script>
+</body>
+</html>

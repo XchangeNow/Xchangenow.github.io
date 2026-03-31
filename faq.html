@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Currency Converter FAQ - Common Questions | XchangeNow</title>
+  <meta name="description" content="Frequently asked questions about currency conversion, exchange rates, how XchangeNow works, and international money transfers." />
+  <meta name="keywords" content="currency converter FAQ, how exchange rates work, how to convert currency online, currency conversion questions, forex FAQ" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://xchangenow.in/faq.html" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does XchangeNow currency converter work?","acceptedAnswer":{"@type":"Answer","text":"XchangeNow fetches live exchange rates from trusted financial data providers. We calculate the converted value using the latest available mid-market rate instantly."}},{"@type":"Question","name":"Are the exchange rates accurate?","acceptedAnswer":{"@type":"Answer","text":"Yes, we use real-time data from ExchangeRate-API which sources rates from central banks worldwide. Rates are updated daily."}}]}
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#0d0d0d;--card:#1a1a1a;--border:#2a2a2a;--accent:#2563eb;--accent2:#0ea5e9;--text:#f5f5f5;--muted:#888;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+    header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:var(--bg);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;}
+    .logo{font-size:20px;font-weight:700;color:var(--text);text-decoration:none;letter-spacing:-0.5px;}
+    .logo span{color:var(--accent2);}
+    .menu-btn{background:none;border:none;cursor:pointer;padding:6px;display:flex;flex-direction:column;gap:5px;}
+    .menu-btn span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;}
+    .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:200;opacity:0;pointer-events:none;transition:opacity 0.3s;}
+    .overlay.open{opacity:1;pointer-events:all;}
+    .drawer{position:fixed;top:0;right:-280px;width:260px;height:100vh;background:#161616;border-left:1px solid var(--border);z-index:300;transition:right 0.3s ease;padding:20px;display:flex;flex-direction:column;}
+    .drawer.open{right:0;}
+    .drawer-close{align-self:flex-end;background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer;margin-bottom:20px;}
+    .drawer-logo{font-size:18px;font-weight:700;color:var(--text);margin-bottom:28px;}
+    .drawer-logo span{color:var(--accent2);}
+    .drawer nav{display:flex;flex-direction:column;gap:4px;}
+    .drawer nav a{color:var(--muted);text-decoration:none;font-size:15px;font-weight:500;padding:12px 14px;border-radius:10px;transition:all 0.2s;display:flex;align-items:center;gap:10px;}
+    .drawer nav a:hover,.drawer nav a.active{background:var(--card);color:var(--text);}
+    .drawer-foot{margin-top:auto;font-size:12px;color:var(--muted);}
+    .wrap{padding:24px 16px 48px;max-width:600px;margin:0 auto;}
+    .page-title{font-size:24px;font-weight:700;letter-spacing:-0.5px;margin-bottom:6px;}
+    .page-title span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .page-sub{color:var(--muted);font-size:14px;margin-bottom:24px;}
+    .faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden;}
+    .faq-q{padding:16px 18px;font-weight:600;font-size:14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none;line-height:1.4;}
+    .faq-q .arr{color:var(--accent);font-size:18px;transition:transform 0.3s;flex-shrink:0;margin-left:10px;}
+    .faq-item.open .faq-q .arr{transform:rotate(45deg);}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s;padding:0 18px;color:var(--muted);font-size:14px;line-height:1.7;}
+    .faq-item.open .faq-a{max-height:300px;padding:0 18px 16px;}
+    .ad-space{background:var(--card);border:1px dashed var(--border);border-radius:12px;padding:20px;text-align:center;color:var(--muted);font-size:12px;margin:20px 0;min-height:90px;display:flex;align-items:center;justify-content:center;}
+  </style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="logo">Xchange<span>Now</span></a>
+  <button class="menu-btn" onclick="openD()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+<div class="overlay" id="ov" onclick="closeD()"></div>
+<div class="drawer" id="dr">
+  <button class="drawer-close" onclick="closeD()">✕</button>
+  <div class="drawer-logo">Xchange<span>Now</span></div>
+  <nav>
+    <a href="index.html">🏠 Home</a>
+    <a href="blog.html">📝 Blog</a>
+    <a href="faq.html" class="active">❓ FAQ</a>
+    <a href="about.html">ℹ️ About</a>
+    <a href="privacy.html">🔒 Privacy Policy</a>
+    <a href="contact.html">📧 Contact</a>
+  </nav>
+  <div class="drawer-foot">© 2026 XchangeNow.in</div>
+</div>
+
+<div class="wrap">
+  <div class="page-title">Frequently <span>Asked</span></div>
+  <div class="page-sub">Everything you need to know about currency conversion</div>
+
+  <div class="ad-space">Advertisement</div>
+
+  <div id="faqList"></div>
+
+  <div class="ad-space" style="margin-top:24px;">Advertisement</div>
+</div>
+
+<script>
+const faqs=[
+  {q:"How does the XchangeNow currency converter work?",a:"XchangeNow fetches live exchange rates from a trusted financial data provider. When you enter an amount and select currencies, we calculate the converted value using the latest available mid-market rate in real time."},
+  {q:"Are the exchange rates on XchangeNow accurate?",a:"Yes, we use daily-updated data from ExchangeRate-API which sources rates from central banks and financial institutions worldwide. Our rates reflect the real mid-market rate as closely as possible."},
+  {q:"What is the mid-market exchange rate?",a:"The mid-market rate is the midpoint between buy and sell prices of a currency. It is the real exchange rate — the one you see on Google. Banks and money changers add their markup on top of this rate."},
+  {q:"Why does my bank give a different rate than XchangeNow?",a:"Banks and money changers add a margin or fee on top of the mid-market rate. XchangeNow shows the mid-market rate — the true baseline rate before any fees or markups are added."},
+  {q:"How many currencies does XchangeNow support?",a:"XchangeNow supports 70+ major world currencies including USD, EUR, GBP, INR, JPY, AUD, CAD, CHF, CNY, AED, SAR and many more from Asia, Africa, Europe, Americas and the Middle East."},
+  {q:"Is XchangeNow free to use?",a:"Yes, completely free. No sign up, no subscription, no hidden fees. Just enter your amount, select currencies, and get the result instantly."},
+  {q:"Can I use XchangeNow on my mobile phone?",a:"Absolutely. XchangeNow is designed mobile-first and works perfectly on all smartphones and tablets. No app download required — just open in your browser."},
+  {q:"How often are exchange rates updated?",a:"Exchange rates are updated daily from central bank and financial data sources. For most personal use cases like travel, money transfers or financial planning, daily rates are more than accurate enough."},
+  {q:"Can I convert any amount using XchangeNow?",a:"Yes, you can convert any amount — from 1 unit to millions. Use the quick amount buttons (1, 10, 100, 500, 1K, 10K) or type any custom amount into the input field."},
+  {q:"What is the best time to exchange currency?",a:"Currency rates fluctuate throughout the day. Generally, rates are most active during overlapping market hours — London and New York sessions for major pairs, or Asian hours for INR, JPY, SGD and other Asian currencies."},
+  {q:"Is it better to exchange currency before or after travelling?",a:"Generally it is better to exchange before travelling at a bank or forex card. Airport exchange counters charge the highest rates. ATMs abroad can be competitive but watch out for foreign transaction fees."},
+  {q:"How do I calculate exchange rate manually?",a:"To convert from one currency to another: multiply the amount by the exchange rate. For example, if 1 USD = 84 INR, then 100 USD = 100 × 84 = 8400 INR. For the reverse, divide instead of multiply."},
+];
+
+const list=document.getElementById('faqList');
+faqs.forEach(f=>{
+  list.innerHTML+=`
+    <div class="faq-item">
+      <div class="faq-q">${f.q}<span class="arr">+</span></div>
+      <div class="faq-a">${f.a}</div>
+    </div>`;
+});
+
+list.addEventListener('click',e=>{
+  const item=e.target.closest('.faq-item');
+  if(!item) return;
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+  if(!isOpen) item.classList.add('open');
+});
+
+function openD(){document.getElementById('dr').classList.add('open');document.getElementById('ov').classList.add('open');}
+function closeD(){document.getElementById('dr').classList.remove('open');document.getElementById('ov').classList.remove('open');}
+</script>
+</body>
+</html>
